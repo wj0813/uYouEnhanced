@@ -87,9 +87,7 @@
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
-@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
-- (CGFloat)totalTime;
-@end
+// Header has been moved to https://github.com/arichornlover/YouTubeHeader/blob/main/YTMainAppVideoPlayerOverlayViewController.h
 
 // Enable Premium logo - @bhackel
 @interface YTITopbarLogoRenderer : NSObject
@@ -159,10 +157,6 @@
 
 @interface YTPlayabilityResolutionUserActionUIController : NSObject // Skips content warning before playing *some videos - @PoomSmart
 - (void)confirmAlertDidPressConfirm;
-@end
-
-@interface YTMainAppControlsOverlayView : UIView
-@property(readonly, nonatomic) YTQTMButton *watchCollapseButton;
 @end
 
 @interface YTTransportControlsButtonView : UIView
