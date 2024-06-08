@@ -109,12 +109,12 @@ body:
   validations:
     required: true
 
-  - type: checkboxes
-    attributes:
-      label: Select the configuration used for building
-      options:
-        - label: buildapp.yml
-        - label: build.sh
+- type: checkboxes
+  attributes:
+    label: Select the configuration used for building uYouEnhanced ipa.
+    options:
+      - label: buildapp.yml
+      - label: build.sh
 
 - type: textarea
   attributes:
