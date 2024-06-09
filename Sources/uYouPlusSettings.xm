@@ -473,23 +473,20 @@ extern NSBundle *uYouPlusBundle();
         @"hideFullscreenActions_enabled",
         ({
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                Class YTVersionUtilsClass = %c(YTVersionUtils);
-                NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
-                NSComparisonResult result = [appVersion compare:@"19.22.6" options:NSNumericSearch];
-                if (result == NSOrderedAscending) {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"iPad is using an Incompatible YouTube Version" message:@"This Option is only compatible with YouTube version 19.22.6 and higher on iPad devices." preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                    [alert addAction:okAction];
-                    [settingsViewController presentViewController:alert animated:YES completion:nil];
-                    return NO;
+                // Show alert if the option is not compatible with iPad
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"iPad Compatibility Issue" message:@"This option is only compatible with iPhone devices." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:okAction];
+                [settingsViewController presentViewController:alert animated:YES completion:nil];
+                return NO;
             } else {
+                // Normal Behavior (iPhone)
                 [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"hideFullscreenActions_enabled"];
                 [settingsViewController reloadData];
                 SHOW_RELAUNCH_YT_SNACKBAR;
                 return YES;
-                }
             }
-        })
+        });
     );
     SWITCH_ITEM2(LOC(@"HIDE_SUGGESTED_VIDEO"), LOC(@"HIDE_SUGGESTED_VIDEO_DESC"), @"noSuggestedVideo_enabled");
     SWITCH_ITEM2(LOC(@"HIDE_HEATWAVES_BAR"), LOC(@"HIDE_HEATWAVES_BAR_DESC"), @"hideHeatwaves_enabled");
