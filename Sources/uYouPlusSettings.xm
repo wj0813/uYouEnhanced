@@ -487,8 +487,9 @@ extern NSBundle *uYouPlusBundle();
                 [settingsViewController reloadData];
                 SHOW_RELAUNCH_YT_SNACKBAR;
                 return YES;
+                }
             }
-        });
+        })
     );
     SWITCH_ITEM2(LOC(@"HIDE_SUGGESTED_VIDEO"), LOC(@"HIDE_SUGGESTED_VIDEO_DESC"), @"noSuggestedVideo_enabled");
     SWITCH_ITEM2(LOC(@"HIDE_HEATWAVES_BAR"), LOC(@"HIDE_HEATWAVES_BAR_DESC"), @"hideHeatwaves_enabled");
