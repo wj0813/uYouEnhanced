@@ -249,9 +249,9 @@ extern NSBundle *uYouPlusBundle();
                 return YES;
             } else {
                 // Paste Settings functionality (default behavior)
-                UIAlertController *confirmPasteAlert = [UIAlertController alertControllerWithTitle:LOC(@"CONFIRM_PASTE_TITLE") message:LOC(@"CONFIRM_PASTE_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
-                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CANCEL") style:UIAlertActionStyleCancel handler:nil]];
-                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *confirmPasteAlert = [UIAlertController alertControllerWithTitle:LOC(@"Are you sure you want to paste the settings?") message:nil preferredStyle:UIAlertControllerStyleAlert];
+                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"Cancel") style:UIAlertActionStyleCancel handler:nil]];
+                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"Confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSString *settingsString = [[UIPasteboard generalPasteboard] string];
                     if (settingsString.length > 0) {
                         NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
@@ -274,7 +274,7 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:pasteSettings];
 
-    SWITCH_ITEM(LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), @"replaceCopyandPasteButtons_enabled");
+//  SWITCH_ITEM(LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), @"replaceCopyandPasteButtons_enabled");
 
     YTSettingsSectionItem *exitYT = [%c(YTSettingsSectionItem)
         itemWithTitle:LOC(@"QUIT_YOUTUBE")
