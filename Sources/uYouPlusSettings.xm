@@ -472,7 +472,10 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"HIDE_FULLSCREEN_ACTION_BUTTONS_DESC"), 
         @"hideFullscreenActions_enabled",
         ({
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && [[[UIApplication sharedApplication] valueForKey:@"shortVersionString"] compare:@"19.22.6" options:NSNumericSearch] != NSOrderedAscending) {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                Class YTVersionUtilsClass = %c(YTVersionUtils);
+                NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+                NSComparisonResult result = [appVersion compare:@"19.22.6" options:NSNumericSearch];
                 [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"hideFullscreenActions_enabled"];
                 SHOW_RELAUNCH_YT_SNACKBAR;
                 return YES;
