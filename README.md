@@ -373,8 +373,6 @@ https://github.com/Balackburn/YTLitePlus/releases
 
 **Cons**
 
-- No custom video downloading feature in YTLitePlus.
-
 - Video quality on WiFi option is not available in YTLitePlus.
 
 - Reordering the pivot bar tabs such as ‘Home‘, ‘Shorts‘, ‘Explore‘, ‘Trending‘, Create‘, ‘Subscriptions‘ & ‘You‘ is not available in YTLitePlus.
