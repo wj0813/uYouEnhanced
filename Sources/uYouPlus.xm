@@ -546,6 +546,18 @@ NSData *cellDividerData;
 }
 %end
 
+// Classic Video Player (Restores the v16.xx.x Video Player Functionality) - @arichornlover
+// To-do: disabling "Precise Video Scrubbing" https://9to5google.com/2022/06/29/youtube-precise-video-scrubbing/
+%group gClassicVideoPlayer
+%hook YTColdConfig
+- (BOOL)isPinchToEnterFullscreenEnabled { return YES; } // Restore Pinch-to-fullscreen
+- (BOOL)deprecateTabletPinchFullscreenGestures { return NO; } // Restore Pinch-to-fullscreen
+%end
+%hook YTHotConfig
+- (BOOL)isTabletFullscreenSwipeGesturesEnabled { return NO; } // Disable Swipe-to-fullscreen (iPad)
+%end
+%end
+
 // Fix LowContrastMode - @arichornlover
 static int contrastMode() {
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -1638,6 +1650,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"noVideosInFullscreen_enabled")) {
         %init(gNoVideosInFullscreen);
+    }
+    if (IS_ENABLED(@"classicVideoPlayer_enabled")) {
+        %init(gClassicVideoPlayer);
     }
     if (IS_ENABLED(@"fixLowContrastMode_enabled")) {
         %init(gFixLowContrastMode);
