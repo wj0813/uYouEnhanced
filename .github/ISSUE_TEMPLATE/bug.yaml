@@ -113,8 +113,8 @@ body:
   attributes:
     label: Select the configuration used for building uYouEnhanced ipa.
     options:
-      - label: buildapp.yml
-      - label: build.sh
+      - label: buildapp.yml (GitHub Actions — build method as suggested by [Wiki - Building](https://github.com/arichornlover/uYouEnhanced/wiki/Building))
+      - label: build.sh (Shell script)
 
 - type: textarea
   attributes:
