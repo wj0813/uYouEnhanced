@@ -371,9 +371,9 @@ https://github.com/Balackburn/YTLitePlus/releases
 
 - YTLitePlus does not cause your device to overheat, unlike uYouEnhanced.
 
-**Cons**
+- YTLitePlus provides faster video & audio downloading than uYouPlus/uYouEnhanced.
 
-- No custom video downloading feature in YTLitePlus.
+**Cons**
 
 - Video quality on WiFi option is not available in YTLitePlus.
 
