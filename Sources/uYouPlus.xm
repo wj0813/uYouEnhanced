@@ -179,11 +179,7 @@ static uint8_t cellDividerDataBytes[] = {
 };
 %hook YTIElementRenderer
 - (NSData *)elementData {
-    NSString *description = [self description];
-    if ([description containsString:@"cell_divider"]) {
-        if (!cellDividerData) cellDividerData = %orig;
-        return cellDividerData;
-    }
+    // NSString *description = [self description];
     if ([self respondsToSelector:@selector(hasCompatibilityOptions)] && self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData) return cellDividerData;
     return %orig;
 }
@@ -199,10 +195,7 @@ static uint8_t cellDividerDataBytes[] = {
             YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
             YTIElementRenderer *elementRenderer = firstObject.elementRenderer;
             NSString *description = [elementRenderer description];
-            return isAdString(description)
-                || [description containsString:@"post_shelf"]
-                || [description containsString:@"product_carousel"]
-                || [description containsString:@"statement_banner"];
+            return isAdString(description);
         }];
         [contentsArray removeObjectsAtIndexes:removeIndexes];
     }
@@ -1646,6 +1639,8 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %ctor {
     // Load uYou first so its functions are available for hooks.
     // dlopen([[NSString stringWithFormat:@"%@/Frameworks/uYou.dylib", [[NSBundle mainBundle] bundlePath]] UTF8String], RTLD_LAZY);
+
+    cellDividerData = [NSData dataWithBytes:cellDividerDataBytes length:cellDividerDataBytesLength];
 
     %init;
     if (IS_ENABLED(@"hideYouTubeLogo_enabled")) {
