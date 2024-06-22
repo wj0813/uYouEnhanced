@@ -1279,7 +1279,7 @@ static int contrastMode() {
             [description containsString:@"id.video.share.button"] ||
             [description containsString:@"id.video.remix.button"] ||
             [description containsString:@"id.ui.add_to.offline.button"]) {
-            self.hidden = YES;
+//          self.hidden = YES;
         }
     }
     %orig(color);
