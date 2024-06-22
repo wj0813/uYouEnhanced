@@ -312,6 +312,9 @@ static uint8_t cellDividerDataBytes[] = {
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
 - (BOOL)enableModularPlayerBarController { return NO; } // fixes some of the iSponorBlock problems
 - (BOOL)mainAppCoreClientEnableCairoSettings { return IS_ENABLED(@"newSettingsUI_enabled"); } // New grouped settings UI
+- (BOOL)enableIosFloatingMiniplayer { return IS_ENABLED(@"floatingMiniplayer_enabled"); } // Floating Miniplayer
+- (BOOL)enableIosFloatingMiniplayerSwipeUpToExpand { return IS_ENABLED(@"floatingMiniplayer_enabled"); } // Floating Miniplayer
+- (BOOL)enableIosFloatingMiniplayerRepositioning { return IS_ENABLED(@"floatingMiniplayer2_enabled"); } // Floating Miniplayer (Repositioning Support, Removes Swiping Up Gesture)
 %end
 
 // Fix Casting: https://github.com/arichornlover/uYouEnhanced/issues/606#issuecomment-2098289942
@@ -360,8 +363,8 @@ static uint8_t cellDividerDataBytes[] = {
 - (BOOL)savedSettingShouldExpire { return NO; }
 %end
 
-// Restore Settings Button in Navigaton Bar - @arichornlover & @bhackel  - https://github.com/arichornlover/uYouEnhanced/issues/178
-/* UNTESTED
+// Restore Settings Button in Navigaton Bar - @arichornlover & @bhackel - https://github.com/arichornlover/uYouEnhanced/issues/178
+/* WILL RESULT IN LOSING THE SETTINGS BUTTON!
 %hook YTRightNavigationButtons
 - (id)visibleButtons {
     Class YTVersionUtilsClass = %c(YTVersionUtils);
@@ -651,7 +654,7 @@ static int contrastMode() {
 */
 %end
 
-// Disable Modern/Rounded Buttons (_ASDisplayView Version's not included) - @arichornlover
+// Disable Modern/Rounded Buttons (_ASDisplayView Version's not supported) - @arichornlover
 %group gDisableModernButtons 
 %hook YTQTMButton // Disable Modern/Rounded Buttons
 + (BOOL)buttonModernizationEnabled { return NO; }
@@ -846,7 +849,6 @@ static int contrastMode() {
 }
 %end
 
-
 // Disable snap to chapter
 %hook YTSegmentableInlinePlayerBarView
 - (void)didMoveToWindow {
@@ -856,7 +858,6 @@ static int contrastMode() {
     }
 }
 %end
-
 
 // Disable Pinch to zoom
 %hook YTColdConfig
@@ -1026,6 +1027,7 @@ static int contrastMode() {
 }
 %end
 
+// LEGACY VERSION ⚠️
 // Hide Fullscreen Button - @arichornlover - PoomSmart's Newer Version of the *YouQuality* tweak breaks when enabling this
 %hook YTInlinePlayerBarContainerView
 - (void)layoutSubviews {
@@ -1044,6 +1046,12 @@ static int contrastMode() {
 }
 %end
 
+// NEW VERSION
+// Hide Fullscreen Button - @arichornlover
+// %hook YTInlinePlayerBarContainerView
+// ..Work-in-progres..
+// %end
+
 // Hide HUD Messages
 %hook YTHUDMessageView
 - (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
@@ -1057,7 +1065,7 @@ static int contrastMode() {
     return IS_ENABLED(@"hideChannelWatermark_enabled") ? NO : %orig;
 }
 %end
-// Hide Channel Watermark (for Old YouTube Versions / Backwards Compatibility)
+// Hide Channel Watermark (for Backwards Compatibility)
 %hook YTAnnotationsViewController
 - (void)loadFeaturedChannelWatermark {
     if (IS_ENABLED(@"hideChannelWatermark_enabled")) {}
@@ -1239,31 +1247,17 @@ static int contrastMode() {
 }
 %end
 
-/*
-// Hide Shorts Cells - @PoomSmart, @iCrazeiOS & @Dayanch96
+/* DISABLED DUE TO CONFLICTS
+// Hide Community Posts - @michael-winay, @arichornlover, @iCrazeiOS @PoomSmart & @Dayanch96
 %hook YTIElementRenderer
 - (NSData *)elementData {
     NSString *description = [self description];
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) { // uYou (Hide Shorts Cells)
-        if ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"#shorts"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) {
-            if (![description containsString:@"history*"]) {
-                if (!cellDividerData) cellDividerData = %orig;
-                return cellDividerData;
-            }
-        }
-    }
-// Hide Community Posts @michael-winay & @arichornlover
     if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
         if ([description containsString:@"post_base_wrapper.eml"]) {
-            if (!cellDividerData) cellDividerData = %orig;
+            if (!cellDividerData) cellDividerData = [NSData dataWithBytes:cellDividerDataBytes length:cellDividerDataBytesLength];
             return cellDividerData;
         }
     }
-// etc. - @Dayanch96
-    BOOL hasShorts = ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) && ![description containsString:@"history*"];
-    BOOL hasShortsInHistory = [description containsString:@"compact_video.eml"] && [description containsString:@"youtube_shorts_"];
-
-    if (hasShorts || hasShortsInHistory) return cellDividerData;
     return %orig;
 }
 %end
@@ -1278,21 +1272,22 @@ static int contrastMode() {
             color = [UIColor redColor];
         }
     }
-// Hide the Button Containers under the Video Player - 17.33.2 and up - @arichornlover
+    // Hide the Button Containers under the Video Player - 17.33.2 and up - @arichornlover
     if (IS_ENABLED(@"hideButtonContainers_enabled")) {
         if ([description containsString:@"id.video.like.button"] ||
             [description containsString:@"id.video.dislike.button"] ||
             [description containsString:@"id.video.share.button"] ||
             [description containsString:@"id.video.remix.button"] ||
             [description containsString:@"id.ui.add_to.offline.button"]) {
-            color = [UIColor clearColor];
+            self.hidden = YES;
         }
     }
     %orig(color);
 }
 %end
 
-// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.33.2 and up - @arichornlover (inspired by @PoomSmart's version) LEGACY METHOD ⚠️
+// LEGACY VERSION ⚠️
+// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.33.2 and up - @arichornlover (inspired by @PoomSmart's version)
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
@@ -1315,6 +1310,7 @@ static int contrastMode() {
 }
 %end
 
+// UPDATED VERSION
 // Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.33.2 and up - @PoomSmart (inspired by @arichornlover) - METHOD BROKE Server-Side on May 14th 2024
 static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
     for (id child in [nodeController children]) {
@@ -1483,19 +1479,6 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 }
 %end
 
-// %hook YTSectionListViewController
-// - (void)loadWithModel:(YTISectionListRenderer *)model {
-//     NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
-//     NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
-//         YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
-//         YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
-//         return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
-//     }];
-//     [contentsArray removeObjectsAtIndexes:removeIndexes];
-//     %orig;
-// }
-// %end
-
 // Disable hints - https://github.com/LillieH001/YouTube-Reborn/blob/v4/
 %group gDisableHints
 %hook YTSettings
@@ -1538,7 +1521,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 
 // Hide the chip bar under the video player?
-// %hook YTChipCloudCell // 
+// %hook YTChipCloudCell
 // - (void)didMoveToWindow {
 //     %orig;
 //     self.hidden = YES;
