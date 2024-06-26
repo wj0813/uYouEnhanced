@@ -24,7 +24,7 @@
 	branch = uYouEnhanced
 [submodule "Tweaks/YouTubeHeader"]
 	path = Tweaks/YouTubeHeader
-	url = https://github.com/arichornlover/YouTubeHeader.git
+	url = https://github.com/arichornloverALT/YouTubeHeader.git
 	branch = main
 [submodule "Extensions"]
 	path = Extensions
@@ -61,7 +61,7 @@
 	url = https://github.com/arichornloverALT/YTSpeed.git
 [submodule "Tweaks/MrBeastify"]
 	path = Tweaks/MrBeastify
-	url = https://github.com/arichornlover/MrBeastify.git
+	url = https://github.com/arichornloverALT/MrBeastify.git
 	branch = main
 [submodule "Tweaks/FLEXing"]
 	path = Tweaks/FLEXing
@@ -77,7 +77,7 @@
 	url = https://github.com/arichornlover/YouGroupSettings.git
 [submodule "Tweaks/YouTimeStamp"]
 	path = Tweaks/YouTimeStamp
-	url = https://github.com/arichornlover/YouTimeStamp.git
+	url = https://github.com/arichornloverALT/YouTimeStamp.git
 [submodule "Tweaks/protobuf"]
 	path = Tweaks/protobuf
 	url = https://github.com/protocolbuffers/protobuf.git
