@@ -68,13 +68,13 @@
 	url = https://github.com/PoomSmart/FLEXing
 [submodule "Tweaks/YTHoldForSpeed"]
 	path = Tweaks/YTHoldForSpeed
-	url = https://github.com/arichornlover/YTHoldForSpeed.git
+	url = https://github.com/arichornloverALT/YTHoldForSpeed.git
 [submodule "Tweaks/uYouLocalization"]
 	path = Tweaks/uYouLocalization
 	url = https://github.com/dayanch96/uYouLocalization.git
 [submodule "Tweaks/YouGroupSettings"]
 	path = Tweaks/YouGroupSettings
-	url = https://github.com/arichornlover/YouGroupSettings.git
+	url = https://github.com/arichornloverALT/YouGroupSettings.git
 [submodule "Tweaks/YouTimeStamp"]
 	path = Tweaks/YouTimeStamp
 	url = https://github.com/arichornloverALT/YouTimeStamp.git
