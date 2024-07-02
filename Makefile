@@ -1,4 +1,4 @@
-export TARGET = iphone:clang:16.5:15.0
+export TARGET = iphone:clang:16.4:15.0
 export ARCHS = arm64
 
 export libcolorpicker_ARCHS = arm64
@@ -14,7 +14,7 @@ MODULES = jailed
 endif
 
 ifndef YOUTUBE_VERSION
-YOUTUBE_VERSION = 19.23.3
+YOUTUBE_VERSION = 19.26.5
 endif
 ifndef UYOU_VERSION
 UYOU_VERSION = 3.0.4
@@ -23,7 +23,7 @@ PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
 TWEAK_NAME = uYouEnhanced
-DISPLAY_NAME = YouTube
+DISPLAY_NAME = ZigTube
 BUNDLE_ID = com.google.ios.youtube
 
 $(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x) $(wildcard Sources/*.m)
