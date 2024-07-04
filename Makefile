@@ -14,7 +14,7 @@ MODULES = jailed
 endif
 
 ifndef YOUTUBE_VERSION
-YOUTUBE_VERSION = 19.26.5
+YOUTUBE_VERSION = 19.25.4
 endif
 ifndef UYOU_VERSION
 UYOU_VERSION = 3.0.4
@@ -23,7 +23,7 @@ PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
 TWEAK_NAME = uYouEnhanced
-DISPLAY_NAME = ZigTube
+DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
 $(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x) $(wildcard Sources/*.m)
