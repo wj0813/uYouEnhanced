@@ -682,8 +682,6 @@ static int contrastMode() {
 - (BOOL)showModernMiniplayerRedesign { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigIosEnableModernTabsForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigIosEnableEpUxUpdates { return NO; } // Deprecated
-- (BOOL)uiSystemsClientGlobalConfigIosEnableSheetsUxUpdates { return NO; } // Deprecated
 - (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigModernizeNativeBgColor { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigModernizeNativeTextColor { return NO; }
@@ -1041,8 +1039,9 @@ static int contrastMode() {
 }
 %end
 
+/*
 // LEGACY VERSION ⚠️
-// Hide Fullscreen Button - @arichornlover - PoomSmart's Newer Version of the *YouQuality* tweak breaks when enabling this
+// Hide Fullscreen Button - @arichornlover - PoomSmart's 1.2.0+ Versions of the *YouQuality* tweak makes the button invisible when enabling this
 %hook YTInlinePlayerBarContainerView
 - (void)layoutSubviews {
     %orig; 
@@ -1059,15 +1058,18 @@ static int contrastMode() {
     }
 }
 %end
+*/
 
 // NEW VERSION
-// Hide Fullscreen Button - @arichornlover - UNTESTED!
-// %hook YTInlinePlayerBarContainerView
-// - (BOOL)fullscreenButtonDisabled { return YES; }
-// - (BOOL)canShowFullscreenButton { return NO; }
-// - (BOOL)canShowFullscreenButtonExperimental { return NO; }
-// - (void)setFullscreenButtonDisabled:(BOOL) // this line should remain disabled for now.
-// %end
+// Hide Fullscreen Button - @arichornlover
+%group gHideFullscreenButton
+%hook YTInlinePlayerBarContainerView
+- (BOOL)fullscreenButtonDisabled { return YES; }
+- (BOOL)canShowFullscreenButton { return NO; }
+- (BOOL)canShowFullscreenButtonExperimental { return NO; }
+// - (void)setFullscreenButtonDisabled:(BOOL) // Uncomment and might implement this if needed - @arichornlover
+%end
+%end
 
 // Hide HUD Messages
 %hook YTHUDMessageView
@@ -1673,6 +1675,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"portraitFullscreen_enabled")) {
         %init(gPortraitFullscreen);
+    }
+    if (IS_ENABLED(@"disableFullscreenButton_enabled")) {
+        %init(gHideFullscreenButton);
     }
     if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
         %init(hideFullscreenActions);
