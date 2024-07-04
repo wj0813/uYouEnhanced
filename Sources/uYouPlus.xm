@@ -664,15 +664,31 @@ static int contrastMode() {
 - (BOOL)cxClientEnableModernizedActionSheet { return NO; }
 - (BOOL)enableClientShortsSheetsModernization { return NO; }
 - (BOOL)enableTimestampModernizationForNative { return NO; }
-- (BOOL)modernizeElementsTextColor { return NO; }
-- (BOOL)modernizeElementsBgColor { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaFeedStretchBottom { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaFrostedBottomBar { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaFrostedPivotBar { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaFrostedPivotBarUpdatedBackdrop { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaFrostedTopBar { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaOpacityPivotBar { return NO; }
+- (BOOL)mainAppCoreClientEnableModernIaTopAndBottomBarIconRefresh { return NO; }
+- (BOOL)mainAppCoreClientEnableModernizedBedtimeReminderU18DefaultSettings { return NO; }
+- (BOOL)modernizeCameoNavbar { return NO; }
 - (BOOL)modernizeCollectionLockups { return NO; }
+- (BOOL)modernizeCollectionLockupsShowVideoCount { return NO; }
+- (BOOL)modernizeElementsBgColor { return NO; }
+- (BOOL)modernizeElementsTextColor { return NO; }
+- (BOOL)postsCreatorClientEnableModernButtonsUi { return NO; }
+- (BOOL)pullToFullModernEdu { return NO; }
+- (BOOL)showModernMiniplayerRedesign { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableModernButtonsForNative { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigIosEnableModernTabsForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigIosEnableEpUxUpdates { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigIosEnableSheetsUxUpdates { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigIosEnableEpUxUpdates { return NO; } // Deprecated
+- (BOOL)uiSystemsClientGlobalConfigIosEnableSheetsUxUpdates { return NO; } // Deprecated
 - (BOOL)uiSystemsClientGlobalConfigIosEnableSnackbarModernization { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigModernizeNativeBgColor { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigModernizeNativeTextColor { return NO; }
 // Disable Rounded Content
+- (BOOL)enableIosFloatingMiniplayerRoundedCornerRadius { return YES; }
 - (BOOL)iosDownloadsPageRoundedThumbs { return NO; }
 - (BOOL)iosRoundedSearchBarSuggestZeroPadding { return NO; }
 - (BOOL)uiSystemsClientGlobalConfigEnableRoundedDialogForNative { return NO; }
