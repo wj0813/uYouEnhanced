@@ -1,4 +1,4 @@
-export TARGET = iphone:clang:16.4:15.0
+export TARGET = iphone:clang:16.5:15.0
 export ARCHS = arm64
 
 export libcolorpicker_ARCHS = arm64
@@ -14,7 +14,7 @@ MODULES = jailed
 endif
 
 ifndef YOUTUBE_VERSION
-YOUTUBE_VERSION = 19.25.4
+YOUTUBE_VERSION = 19.26.5
 endif
 ifndef UYOU_VERSION
 UYOU_VERSION = 3.0.4
