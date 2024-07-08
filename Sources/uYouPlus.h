@@ -61,9 +61,7 @@
 @interface YTPlayerBarController : NSObject
 @property(nonatomic, strong) YTInlinePlayerBarContainerView *playerBar;
 @end
-@interface YTInlinePlayerBarContainerView (uYouEnhanced)
-@property(nonatomic, assign) BOOL shouldDisplayTimeRemaining;
-@end
+// Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTInlinePlayerBarContainerView.h
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -90,7 +88,7 @@
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
-// Header has been moved to https://github.com/arichornlover/YouTubeHeader/blob/main/YTMainAppVideoPlayerOverlayViewController.h
+// Header has been moved to https://github.com/arichornloverALT/YouTubeHeader/blob/main/YTMainAppVideoPlayerOverlayViewController.h
 
 // Enable Premium logo - @bhackel
 @interface YTITopbarLogoRenderer : NSObject
@@ -136,13 +134,10 @@
 @end
 
 // Disable Pull to Full for landscape videos - @bhackel
-@interface YTWatchPullToFullController : NSObject
-@property(nonatomic, strong) YTWatchViewController *playerViewSource;
-@end
-@interface YTWatchViewController (uYouEnhanced)
-@property(nonatomic, strong) YTWatchPullToFullController *pullToFullController;
-- (NSUInteger) allowedFullScreenOrientations;
+// Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTWatchPullToFullController.h
+
 // Fullscreen to the Right (uYouEnhanced Version) - @arichornlover
+@interface YTWatchViewController (uYouEnhanced)
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations;
 - (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation;
 - (void)forceRightFullscreenOrientation;
