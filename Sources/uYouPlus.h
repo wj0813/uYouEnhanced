@@ -44,16 +44,6 @@
 #import <YouTubeHeader/YTWatchViewController.h>
 #import "uYouPlusThemes.h" // uYouPlus Themes
 
-// Hide buttons under the video player by @PoomSmart
-#import <YouTubeHeader/ASCollectionElement.h>
-#import <YouTubeHeader/ASCollectionView.h>
-#import <YouTubeHeader/ELMNodeController.h>
-
-// YouTube-X
-#import <YouTubeHeader/YTReelModel.h>
-#import <YouTubeHeader/YTVideoWithContextNode.h>
-#import <YouTubeHeader/ELMCellNode.h>
-
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
 #define APP_THEME_IDX [[NSUserDefaults standardUserDefaults] integerForKey:@"appTheme"]
