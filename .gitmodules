@@ -77,3 +77,6 @@
 [submodule "Tweaks/YouTimeStamp"]
 	path = Tweaks/YouTimeStamp
 	url = https://github.com/arichornloverALT/YouTimeStamp.git
+[submodule "Tweaks/iSponsorBlock"]
+	path = Tweaks/iSponsorBlock
+	url = https://github.com/Galactic-Dev/iSponsorBlock.git
