@@ -80,3 +80,6 @@
 [submodule "Tweaks/iSponsorBlock"]
 	path = Tweaks/iSponsorBlock
 	url = https://github.com/Galactic-Dev/iSponsorBlock.git
+[submodule "Tweaks/protobuf"]
+	path = Tweaks/protobuf
+	url = https://github.com/protocolbuffers/protobuf.git
