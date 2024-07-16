@@ -81,6 +81,3 @@
 [submodule "Tweaks/YouTimeStamp"]
 	path = Tweaks/YouTimeStamp
 	url = https://github.com/arichornloverALT/YouTimeStamp.git
-[submodule "Tweaks/protobuf"]
-	path = Tweaks/protobuf
-	url = https://github.com/protocolbuffers/protobuf.git
