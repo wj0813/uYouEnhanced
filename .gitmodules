@@ -50,7 +50,6 @@
 	path = Tweaks/iSponsorBlock
 	url = https://github.com/Galactic-Dev/iSponsorBlock.git
 	branch = master
->>>>>>> 6300fd4cac5f8f038c2d79620d02a68dd3e6f6b3
 [submodule "Tweaks/YTClassicVideoQuality"]
 	path = Tweaks/YTClassicVideoQuality
 	url = https://github.com/PoomSmart/YTClassicVideoQuality.git
