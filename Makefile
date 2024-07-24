@@ -23,7 +23,7 @@ PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
 TWEAK_NAME = uYouEnhanced
-DISPLAY_NAME = SquidTube
+DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
 $(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x) $(wildcard Sources/*.m)
